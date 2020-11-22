@@ -136,7 +136,6 @@ const Calculator = () => {
         </div>
         
         <div className="w-1/2 flex justify-around">
-          <Button text="=" handleClick={equal} />
           <Button text="AC" handleClick={cancel} />
         </div>
       </div>
