@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Button from '../../components/button';
-import './main.css'
 
 const operatorsSigns = ['/', '*', '+', '-'];
 const memoriesButton = ['M+', 'M-', 'MC', 'MR'];
@@ -135,7 +134,7 @@ const Calculator = () => {
           </div>
         </div>
         
-        <div className="w-1/2 flex justify-around">
+        <div className="w-1/4 flex justify-center">
           <Button text="AC" handleClick={cancel} />
         </div>
       </div>
