@@ -115,8 +115,8 @@ const Calculator = () => {
   }
 
   return (
-    <div className="w-52 m-auto shadow-sm p-3 bg-black">
-      <div className="screen bg-gray-500 rounded mb-3 p-3">
+    <div className="w-52 m-auto mt-10 shadow-sm p-3 bg-black">
+      <div className="screen bg-gray-500 rounded mb-3 p-3 h-12">
         <p className="text-white text-right">{result}</p>
       </div>
       <div className="w-full">
