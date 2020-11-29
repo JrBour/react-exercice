@@ -4,15 +4,12 @@ import Button from '../../components/button';
 const operatorsSigns = ['/', '*', '+', '-'];
 const memoriesButton = ['M+', 'M-', 'MC', 'MR'];
 
-// M+ and M- stock the result and display him
-// MC Clear the memory
-// MR Display the results of all results (result + secondResult - ThirdResult...)
-
 const Calculator = () => {
   const [result, setResult] = useState('')
   const [displayResult, setDisplayResult] = useState(false)
   const [previousResult, setPreviousResult] = useState('');
   const [previousOperator, setPreviousOperator] = useState();
+
   const [memoriesResults, setMemoriesResults] = useState([]);
   const [memoriesOperators, setMemoriesOperator] = useState([]);
 
@@ -70,7 +67,6 @@ const Calculator = () => {
     setResult(newResult)
     setPreviousResult('')
     setDisplayResult(true)
-    setPreviousOperator()   
     setMemoriesResults([...memoriesResults, newResult])
   }
 
@@ -79,12 +75,10 @@ const Calculator = () => {
       return;
     }
 
-    if(memoryOperator)
-
     switch(memoryOperator) {
       case 'M+':
       case 'M-':
-        handleMemoryButton(memoriesButton)
+        handleMemoryButton(memoryOperator)
         break;
       case 'MC':
         setMemoriesOperator([]);
@@ -133,7 +127,6 @@ const Calculator = () => {
             {operatorsSigns.map(operator => <Button key={operator} text={operator} handleClick={calcul} />)}
           </div>
         </div>
-        
         <div className="w-1/4 flex justify-center">
           <Button text="AC" handleClick={cancel} />
         </div>
