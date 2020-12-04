@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 
-const Input = ({ type, label, name, placeholder, minlength, maxlength, required, handleChange, value }) => (
+const Input = ({ type, label, name, placeholder, minlength, maxlength, required, handleChange, value, error }) => (
   <div className="flex flex-col mt-10">
     <label htmlFor={name}>{label}</label>
     <input
-    className="border p-3 w-1/2"
+    className="border p-1 w-1/2"
       type={type}
       name={name}
       id={name}
@@ -15,6 +15,7 @@ const Input = ({ type, label, name, placeholder, minlength, maxlength, required,
       onChange={handleChange}
       value={value} 
     />
+    {error && <p className="text-red-500 text-sm">{error}</p>}
   </div>
 )
 
@@ -36,6 +37,7 @@ Input.defaultProps = {
   minlength: '0',
   required: false,
   placeholder: '',
+  error: ''
 }
 
 export default Input;
