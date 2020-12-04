@@ -28,7 +28,7 @@ const civilities = [
   {
     id: 'miss',
     value: 'miss',
-    labelRadio: 'Madame'
+    labelRadio: 'Mademoiselle'
   },
   {
     id: 'other',

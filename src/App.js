@@ -5,17 +5,17 @@ import {
 } from 'react-router-dom'
 import Calculator from './pages/calculator';
 import Form from './pages/form';
+import Test from './pages/test';
 import './tailwind.output.css'
 
 const App = () => (
-  <div>
-    <Router>
-      <Switch>
-        <Route path="/calculator" exact component={Calculator} />
-        <Route path="/form" exact component={Form} />
-      </Switch>
-    </Router>
-  </div>
+  <Router>
+    <Switch>
+      <Route path="/calculator" exact component={Calculator} />
+      <Route path="/form" exact component={Form} />
+      <Route path="/test/:id" exact component={Test} />
+    </Switch>
+  </Router>
 );
 
 export default App;
