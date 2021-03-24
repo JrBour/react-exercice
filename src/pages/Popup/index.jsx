@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import RegisterPopup from '../../components/registerPopup'
+import RegisterPopup from '../../components/RegisterPopup'
 
 const Popup = ()  => {
   const [displayPopup, setDisplayPopup] = useState(false)

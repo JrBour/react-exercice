@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import RegisterButton from '../registerButton'
-import Input from '../input'
+import RegisterButton from '../RegisterButton'
+import Input from '../Input'
 import validateFields from './validator'
 import checkAllErrors from '../../utils/error'
 
@@ -12,7 +12,6 @@ const FirstStep = ({ onNextStep, fields, onChangeField }) => {
   })
 
   const handleChangeField = ({ target: { name, value } }) => {
-    console.log(name)
     onChangeField(name, value)
     const error = validateFields(name, value)
     setErrors({

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import RegisterButton from '../registerButton'
+import RegisterButton from '../RegisterButton'
 import check from '../../static/img/check.png'
 
 const FinalStep = ({ closePopup }) => (

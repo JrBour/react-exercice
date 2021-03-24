@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from '../../components/button';
+import Button from '../../components/Button';
 
 const operatorsSigns = ['/', '*', '+', '-'];
 const memoriesButton = ['M+', 'M-', 'MC', 'MR'];

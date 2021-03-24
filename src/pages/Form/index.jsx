@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import Input from '../../components/input'
-import Select from '../../components/select'
-import Radio from '../../components/radio'
-import Checkbox from '../../components/checkbox'
+import Input from '../../components/Input'
+import Select from '../../components/Select'
+import Radio from '../../components/Radio'
+import Checkbox from '../../components/Checkbox'
 
 const selectOptions = [
   {

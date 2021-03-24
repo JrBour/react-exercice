@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
-import RegisterButton from '../registerButton'
-import Input from '../input'
-import Select from '../select'
+import RegisterButton from '../RegisterButton'
+import Input from '../Input'
+import Select from '../Select'
 import validateFields from './validator'
 import checkAllErrors from '../../utils/error'
 

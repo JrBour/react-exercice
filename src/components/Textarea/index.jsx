@@ -1,43 +1,36 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-const Input = ({ type, label, name, placeholder, minlength, maxlength, required, handleChange, value, error }) => (
+const Textarea = ({ label, name, id, placeholder, cols, row, required, handleChange, value, error }) => (
   <div className="flex flex-col mt-10">
     <label htmlFor={name}>{label}</label>
-    <input
-    className="border p-1 w-1/2"
-      type={type}
+    <textarea 
+      className="border p-1"
       name={name}
-      id={name}
-      placeholder={placeholder}
-      min={minlength}
-      max={maxlength}
+      id={id}
       required={required}
+      placeholder={placeholder}
       onChange={handleChange}
-      value={value} 
+      value={value}
     />
     {error && <p className="text-red-500 text-sm">{error}</p>}
   </div>
 )
 
-Input.propTypes = {
+Textarea.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  maxlength: PropTypes.string,
-  minlength: PropTypes.string,
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   required: PropTypes.bool
 }
 
-Input.defaultProps = {
+Textarea.defaultProps = {
   type: 'text',
-  maxlength: '100',
-  minlength: '0',
   required: false,
   placeholder: '',
   error: ''
 }
 
-export default Input;
+export default Textarea;

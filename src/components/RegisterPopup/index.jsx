@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
-import FirstStep from '../firstStep'
-import SecondStep from '../secondStep'
-import ThirdStep from '../thirdStep'
-import FinalStep from '../finalStep'
-import Popup from '../popup'
+import FirstStep from '../FirstStep'
+import SecondStep from '../SecondStep'
+import ThirdStep from '../ThirdStep'
+import FinalStep from '../FinalStep'
+import Popup from '../Popup'
 
 const RegisterPopup = ({ onClose }) => {
   const [step, setStep] = useState(1)
