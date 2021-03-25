@@ -1,16 +1,15 @@
-import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import articles from '../../constants/articles'
+import { useSelector } from 'react-redux'
+import { getArticle } from '../../store/articles/selectors'
 import ArticleDescription from '../../components/ArticleDescription'
 
 const Article = () => {
   let { id } = useParams();
-  const [article, setArticle] = useState();
+  const article = useSelector(state => getArticle(state, id));
 
-  useEffect(() => {
-    const currentArticle = articles.find(article => article.id === parseInt(id, 10));
-    setArticle(currentArticle);
-  }, [id])
+  // useEffect(() => {
+  //   setArticle(article);
+  // }, [article])
 
   return (
     <div>

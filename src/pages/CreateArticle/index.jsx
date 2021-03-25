@@ -1,4 +1,8 @@
 import { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { v4 as uuidv4 } from 'uuid';
+import { addArticleAction } from '../../store/articles/actions'
 import Button from '../../components/Button'
 import Textarea from '../../components/Textarea'
 import Input from '../../components/Input'
@@ -6,6 +10,8 @@ import Banner from '../../components/Banner'
 import Select from '../../components/Select'
 
 const CreateArticle = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [countries, setCountries] = useState([])
   const [displayBanner, setDisplayBanner] = useState(false)
   const [fields, setFields] = useState({
@@ -46,6 +52,7 @@ const CreateArticle = () => {
     if (checkRequired || fields.price === '0.00') {
       return;
     }
+    dispatch(addArticleAction({...fields, id: uuidv4()}))
     setDisplayBanner(true)
     setFields({
       title: '',
@@ -92,6 +99,7 @@ const CreateArticle = () => {
           handleChange={handleChangeField}
         />
         <Button type="submit" text="Ajouter article" />
+        <Button text="Articles" handleClick={() => history.push('/articles')} />
       </form>
     </>
   )
