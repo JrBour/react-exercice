@@ -1,20 +1,26 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import ConfirmationPopup from '../../components/ConfirmationPopup'
 import ArticlePreview from '../../components/ArticlePreview'
-import { getArticles, removeArticle } from '../../store/articles'
+import { getArticles, removeArticleById, retrieveArticles } from '../../store/articles'
 
 const Articles = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const articles = useSelector(getArticles)
 
+  useEffect(() => {
+    if (!articles.length) {
+      dispatch(retrieveArticles())
+    }
+  })
+
   const [displayPopup, setDisplayPopup] = useState(false)
   const [articleIdToRemove, setArticleIdToRemove] = useState(false)
 
-  const removeArticleById = () => {
-    dispatch(removeArticle({ id : articleIdToRemove }))
+  const removeArticle = () => {
+    dispatch(removeArticleById(articleIdToRemove))
     setArticleIdToRemove()
     setDisplayPopup(false)
   }
@@ -26,7 +32,7 @@ const Articles = () => {
 
   return (
     <>
-      {displayPopup && <ConfirmationPopup onClose={() => setDisplayPopup(false)} confirmed={removeArticleById} />}
+      {displayPopup && <ConfirmationPopup onClose={() => setDisplayPopup(false)} confirmed={removeArticle} />}
       <h1 className="text-center text-4xl font-bold">Articles</h1>
       <button className="bg-green-500 rounded px-5 py-2 ml-5" onClick={() => history.push('/create-article')} >Ajouter un article</button>
       <div className="flex flex-wrap justify-center w-1/2 mx-auto">

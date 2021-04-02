@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { v4 as uuidv4 } from 'uuid';
-import { addArticle } from '../../store/articles'
+import { createArticle } from '../../store/articles'
 import Button from '../../components/Button'
 import Textarea from '../../components/Textarea'
 import Input from '../../components/Input'
@@ -52,7 +51,7 @@ const CreateArticle = () => {
     if (checkRequired || fields.price === '0.00') {
       return;
     }
-    dispatch(addArticle({...fields, id: uuidv4()}))
+    dispatch(createArticle({...fields}))
     setDisplayBanner(true)
     setFields({
       title: '',
