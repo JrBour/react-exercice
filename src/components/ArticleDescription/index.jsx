@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import ArticlePreview from '../ArticlePreview'
 import Button from '../Button'
-import { getNextArticle, getPreviousArticle } from '../../store/articles/selectors'
+import { getNextArticle, getPreviousArticle } from '../../store/articles'
 
 const ArticleDescription = ({ article }) => {
   const history = useHistory();

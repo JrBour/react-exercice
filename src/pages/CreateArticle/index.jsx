@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid';
-import { addArticleAction } from '../../store/articles/actions'
+import { addArticle } from '../../store/articles'
 import Button from '../../components/Button'
 import Textarea from '../../components/Textarea'
 import Input from '../../components/Input'
@@ -52,7 +52,7 @@ const CreateArticle = () => {
     if (checkRequired || fields.price === '0.00') {
       return;
     }
-    dispatch(addArticleAction({...fields, id: uuidv4()}))
+    dispatch(addArticle({...fields, id: uuidv4()}))
     setDisplayBanner(true)
     setFields({
       title: '',

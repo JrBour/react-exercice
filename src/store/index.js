@@ -1,15 +1,11 @@
-import { combineReducers, createStore, compose } from 'redux';
-import articles from './articles/reducers';
+import { combineReducers } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
+import articles from './articles/index.js';
 
-const reducers = combineReducers({
+const reducer = combineReducers({
     articles,
 })
 
-
-const enhancers = compose(
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
-const store = createStore(reducers, enhancers);
+const store = configureStore({ reducer, devTools: true });
 
 export default store;
