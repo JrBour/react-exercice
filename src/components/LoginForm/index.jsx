@@ -1,11 +1,18 @@
+import Cookies from 'js-cookie'
+import jwt from 'jsonwebtoken';
 import { useState } from 'react';
+import { useHistory, Link } from 'react-router-dom'
 import Input from '../Input'
+import Button from '../Button'
 
 const LoginForm = () => {
+  const history = useHistory();
+  
   const [fields, setFields] = useState({
-    email: '',
+    username: '',
     password: ''
   })
+  const [error, setError] = useState()
 
   const handleChangeField = ({ target: { name, value } }) => setFields({ ...fields, [name]: value })
 
@@ -13,12 +20,16 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:3004/users?email=${fields.email}&password=${fields.password}`, {
+      const response = await fetch(`http://localhost:3004/users?username=${fields.username}&password=${fields.password}`, {
         method: 'GET',
       })
       const data = await response.json()
       if (data.length) {
-        // Add JWT token code
+        const token = jwt.sign(data[0], 'secret');
+        Cookies.set('jwt', token)
+        history.push('/posts')
+      } else {
+        setError("Email ou/et mot de passe incorrect")
       }
     } catch(e){
       throw e;
@@ -27,10 +38,13 @@ const LoginForm = () => {
 
   return (
     <>
-      <h1 className="text-center">Inscription</h1>
-      <form onSubmit={submitForm}>
-        <Input label="Email" id="email" name="email" value={fields.email} handleChange={handleChangeField}  />
+      <h1 className="text-center py-10 font-bold text-2xl">Connexion</h1>
+      <form onSubmit={submitForm} className="w-1/3 m-auto border rounded p-5">
+        <Input label="Identifiant" id="username" name="username" value={fields.username} handleChange={handleChangeField}  />
         <Input label="Mot de passe" id="password" type="password" name="password" value={fields.password} handleChange={handleChangeField}  />
+        {error && <p className="text-red-900">{error}</p>}
+        <Button type="submit" text="Se connecter" />
+        <p className="text-center"><Link to="/register">Pas encore de compte ?</Link></p>
       </form>
     </>
   )

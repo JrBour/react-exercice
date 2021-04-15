@@ -3,6 +3,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom'
+import Header from './components/Header'
 import Calculator from './pages/Calculator';
 import Home from './pages/Home'
 import Form from './pages/Form';
@@ -19,6 +20,7 @@ import './tailwind.output.css'
 
 const App = () => (
   <Router>
+    <Header/>
     <Switch>
       <Route path="/calculator" component={Calculator} />
       <Route path="/form" component={Form} />

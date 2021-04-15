@@ -1,13 +1,14 @@
 {
-  "articles": [
-  ],
-  "posts": [
-
-  ],
-  "comments": [
-
-  ],
+  "articles": [],
+  "posts": [],
+  "comments": [],
   "users": [
-    
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "username": "JrBour",
+      "password": "Qwert123)",
+      "id": 1
+    }
   ]
 }
