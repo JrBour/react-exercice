@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { getCurrentUser, resetProfile } from '../../store/users'
@@ -8,7 +9,8 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const logout = () => {
-    dispatch(resetProfile)
+    dispatch(resetProfile())
+    Cookies.remove('jwt')
     history.push('/login')
   }
 

@@ -34,8 +34,7 @@ export const createUser = user => async dispatch => {
       },
       body: JSON.stringify(user)
     })
-    const data = await response.json();
-    dispatch(addProfile(data))
+    await response.json();
   } catch(e) {
     console.error(e);
   }

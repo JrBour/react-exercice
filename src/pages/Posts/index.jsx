@@ -1,15 +1,18 @@
-import { useSelector } from 'react-redux'
-import Post from '../../components/Post';
+import { useHistory } from 'react-router-dom'
 import Auth from '../../hoc/auth'
-import { getPosts } from '../../store/posts'
+import PostsContainer from '../../containers/Posts'
+import Button from '../../components/Button'
 
 const Posts = () => {
-  const posts = useSelector(getPosts);
-
+  const history = useHistory();
+  
   return (
     <>
-      <h1>Posts</h1>
-      {posts.map(post => <Post key={post.id} post={post} /> )}
+      <h1 className="text-center text-3xl font-bold py-4">Posts</h1>
+      <div className="w-10/12 mx-auto">
+        <Button text="Ajouter un post" handleClick={() => history.push('/create-post')} />
+        <PostsContainer />
+      </div>
     </>
   )
 }

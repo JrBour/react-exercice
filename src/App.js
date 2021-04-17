@@ -3,7 +3,6 @@ import {
   Switch,
   Route
 } from 'react-router-dom'
-import Header from './components/Header'
 import Calculator from './pages/Calculator';
 import Home from './pages/Home'
 import Form from './pages/Form';
@@ -14,13 +13,13 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Posts from './pages/Posts';
 import Post from './pages/Post';
+import CreatePost from './pages/CreatePost'
 
 import CreateArticle from './pages/CreateArticle';
 import './tailwind.output.css'
 
 const App = () => (
   <Router>
-    <Header/>
     <Switch>
       <Route path="/calculator" component={Calculator} />
       <Route path="/form" component={Form} />
@@ -32,6 +31,7 @@ const App = () => (
       <Route path="/login" component={Login} />
       <Route path="/posts" component={Posts} />
       <Route path="/posts/:id" component={Post} />
+      <Route path="/create-post" component={CreatePost} />
       <Route path="/" component={Home} />
     </Switch>
   </Router>

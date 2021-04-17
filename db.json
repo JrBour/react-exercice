@@ -1,7 +1,17 @@
 {
   "articles": [],
-  "posts": [],
-  "comments": [],
+  "posts": [
+    {
+      "text": "Hello world !",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "text": "Hello world 2",
+      "userId": 1,
+      "id": 4
+    }
+  ],
   "users": [
     {
       "firstName": "John",

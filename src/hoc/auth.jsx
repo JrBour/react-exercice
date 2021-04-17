@@ -3,6 +3,7 @@ import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { useEffect } from 'react'
+import Header from '../components/Header'
 import { addProfile } from '../store/users'
 
 const Auth = Component => {
@@ -13,14 +14,19 @@ const Auth = Component => {
     useEffect(() => {
       if (!Cookies.get('jwt')) {
         history.push('/login')
+        return;
       }
-      // Decry
       const payload = jwt.decode(Cookies.get('jwt'))
       delete payload.iat
       dispatch(addProfile(payload))
     })
     
-    return <Component/>
+    return (
+      <>
+        <Header />
+        <Component/>
+      </>
+    )
   }
   return Layout
 }

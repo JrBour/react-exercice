@@ -1,16 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  list: []
+  list: null
 }
 
 const posts = createSlice({
   name: 'posts',
   initialState,
   reducers: {
-    addPost(state, { payload }) {
-      state.list = [...state.list, payload]
-    },
     addPosts(state, { payload }) {
       state.list = payload
     },
@@ -22,32 +19,13 @@ const posts = createSlice({
 
 // Actions
 const {
-    addPost,
     addPosts,
     removePost
 } = posts.actions;
 
-
-// Redux-thunk
-export const createPost = article => async dispatch => {
-  try {
-    const response = await fetch("http://localhost:3004/posts", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(article)
-    })
-    const data = await response.json();
-    dispatch(addPost(data))
-  } catch(e) {
-    console.error(e);
-  }
-}
-
 export const retrievePosts = () => async dispatch => {
   try {
-    const response = await fetch("http://localhost:3004/articles", {
+    const response = await fetch("http://localhost:3004/posts?_expand=user", {
       method: 'GET',
     })
     const data = await response.json();
@@ -59,7 +37,7 @@ export const retrievePosts = () => async dispatch => {
 
 export const removePostById = id => async dispatch => {
    try {
-    await fetch(`http://localhost:3004/articles/${id}`, {
+    await fetch(`http://localhost:3004/posts/${id}`, {
       method: 'DELETE'
     })
     dispatch(removePost({ id }))
