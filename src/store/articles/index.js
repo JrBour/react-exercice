@@ -31,7 +31,7 @@ const {
 // Redux-thunk
 export const createArticle = article => async dispatch => {
   try {
-    const response = await fetch("http://localhost:3004/articles", {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}articles`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ export const createArticle = article => async dispatch => {
 
 export const retrieveArticles = () => async dispatch => {
   try {
-    const response = await fetch("http://localhost:3004/articles", {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}articles`, {
       method: 'GET',
     })
     const data = await response.json();
@@ -59,7 +59,7 @@ export const retrieveArticles = () => async dispatch => {
 
 export const removeArticleById = id => async dispatch => {
    try {
-    await fetch(`http://localhost:3004/articles/${id}`, {
+    await fetch(`${process.env.REACT_APP_API_URL}articles/${id}`, {
       method: 'DELETE'
     })
     dispatch(removeArticle({ id }))

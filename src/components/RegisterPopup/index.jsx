@@ -34,7 +34,7 @@ const RegisterPopup = ({ onClose }) => {
 
   const submitForm = async () => {
     try {
-      await fetch('http://localhost:3001/users', {
+      await fetch(`${process.env.REACT_APP_API_URL}users`, {
         headers: {
           'Content-Type': 'application/json'
         },

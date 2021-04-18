@@ -25,7 +25,7 @@ const {
 
 export const retrievePosts = () => async dispatch => {
   try {
-    const response = await fetch("http://localhost:3004/posts?_expand=user", {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}posts?_expand=user`, {
       method: 'GET',
     })
     const data = await response.json();
@@ -37,7 +37,7 @@ export const retrievePosts = () => async dispatch => {
 
 export const removePostById = id => async dispatch => {
    try {
-    await fetch(`http://localhost:3004/posts/${id}`, {
+    await fetch(`${process.env.REACT_APP_API_URL}posts/${id}`, {
       method: 'DELETE'
     })
     dispatch(removePost({ id }))

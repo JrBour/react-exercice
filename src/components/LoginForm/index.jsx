@@ -20,7 +20,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:3004/users?username=${fields.username}&password=${fields.password}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}users?username=${fields.username}&password=${fields.password}`, {
         method: 'GET',
       })
       const data = await response.json()

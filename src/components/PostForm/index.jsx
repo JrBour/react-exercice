@@ -18,7 +18,7 @@ const PostForm = () => {
     }
 
     try {
-      await fetch('http://localhost:3004/posts', {
+      await fetch(`${process.env.REACT_APP_API_URL}posts`, {
         method: 'post',
         headers: {
           'content-type': 'application/json'
