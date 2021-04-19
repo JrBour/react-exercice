@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom';
 import Button from '../Button';
@@ -7,6 +8,7 @@ import { createUser } from '../../store/users'
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [fields, setFields] = useState({
     firstName: '',
     lastName: '',
@@ -26,6 +28,7 @@ const RegisterForm = () => {
     }
 
     dispatch(createUser(fields))
+    history.push("/login")
   }
 
   return (

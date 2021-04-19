@@ -1,11 +1,14 @@
 import Cookies from 'js-cookie'
 import jwt from 'jsonwebtoken';
+import { useDispatch } from 'react-redux'
 import { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom'
+import { addProfile } from '../../store/users'
 import Input from '../Input'
 import Button from '../Button'
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   
   const [fields, setFields] = useState({
@@ -27,6 +30,10 @@ const LoginForm = () => {
       if (data.length) {
         const token = jwt.sign(data[0], 'secret');
         Cookies.set('jwt', token)
+        
+        const payload = jwt.decode(Cookies.get('jwt'))
+        delete payload.iat
+        dispatch(addProfile(payload))
         history.push('/posts')
       } else {
         setError("Email ou/et mot de passe incorrect")

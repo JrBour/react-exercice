@@ -8,7 +8,7 @@ const Post = ({ post, deletePost }) => {
     <div className="relative w-full border p-3 mb-2">
       <p className="font-semibold">{post.user.username}</p>
       <p>{post.text}</p>
-      {user.id === post.user.id && <button className="absolute top-2 right-2" onClick={() => deletePost(post.id)}>x</button>}
+      {user?.id === post.user.id && <button className="absolute top-2 right-2" onClick={() => deletePost(post.id)}>x</button>}
     </div>
   )
 }
