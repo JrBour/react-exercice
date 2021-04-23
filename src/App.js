@@ -12,7 +12,6 @@ import Article from './pages/Article';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Posts from './pages/Posts';
-import Post from './pages/Post';
 import CreatePost from './pages/CreatePost'
 
 import CreateArticle from './pages/CreateArticle';
@@ -30,7 +29,6 @@ const App = () => (
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
       <Route path="/posts" component={Posts} />
-      <Route path="/posts/:id" component={Post} />
       <Route path="/create-post" component={CreatePost} />
       <Route path="/" component={Home} />
     </Switch>
