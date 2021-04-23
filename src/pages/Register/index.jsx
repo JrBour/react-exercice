@@ -1,5 +1,6 @@
 import RegisterForm from '../../components/RegisterForm';
+import Auth from '../../hoc/auth'
 
 const Register = () => <RegisterForm />
 
-export default Register;
+export default Auth(Register);
